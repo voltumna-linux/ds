@@ -1,0 +1,3 @@
+TOOLCHAIN_HOST_TASK:append = " nativesdk-pogo nativesdk-jive \
+	nativesdk-python3-pytango nativesdk-cpptango-dev \
+	nativesdk-net-snmp-dev nativesdk-python3-sinstruments"
