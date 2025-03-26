@@ -1,9 +1,9 @@
-MACHINE="kvm-naples"
+MACHINE="naples-kvm"
 nice bitbake -k ds-sre log-sre tango-sre || return
 SDKMACHINE="x86_64"
 nice bitbake -k ds-sdk -c populate_sdk || return
 
-MACHINE="kvm-cascadelake"
-nice bitbake -k ds-sre log-sre tango-sre || return
-SDKMACHINE="x86_64"
-nice bitbake -k ds-sdk -c populate_sdk || return
+#MACHINE="cascadelake-kvm"
+#nice bitbake -k ds-sre log-sre tango-sre || return
+#SDKMACHINE="x86_64"
+#nice bitbake -k ds-sdk -c populate_sdk || return
