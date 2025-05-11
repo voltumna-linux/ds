@@ -1,1 +1,1 @@
-IMAGE_INSTALL:append = " python3-pytango"
+IMAGE_INSTALL:append = " starter users cpptango python3-pytango net-snmp-client"
