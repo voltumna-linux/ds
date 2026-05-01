@@ -1,1 +1,1 @@
-IMAGE_INSTALL:append = " cpptango-dev net-snmp-dev"
+IMAGE_INSTALL:append = " cpptango-dev net-snmp-dev libads-dev"
