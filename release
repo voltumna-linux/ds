@@ -6,10 +6,12 @@ trap clean EXIT
 DEPLOYDIR=tmp/deploy
 
 declare -A IMAGES
-IMAGES[naples-kvm]="ds-sre intranet tar
-                	ds-sdk intranet sh"
-#IMAGES[cascadelake-kvm]="ds-sre intranet tar
-#                	ds-sdk intranet sh"
+IMAGES[naples-kvm]="ds-sre public tar
+			ds-sde public tar
+                	ds-sdk public sh"
+IMAGES[cascadelake-kvm]="ds-sre public tar
+			ds-sde public tar
+                	ds-sdk public sh"
 
 for MACHINE in ${!IMAGES[@]}
 do
