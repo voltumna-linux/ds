@@ -6,10 +6,12 @@
 require conf/machine/include/tune-zen1.inc
 require conf/machine/include/quartz.inc
 
-MACHINEOVERRIDES =. "amd:"
+MACHINEOVERRIDES =. "amd:amdx86:naples:"
 ALLOW_EMPTY:${KERNEL_PACKAGE_NAME}-devicetree = "1"
 MACHINE_FEATURES += "efi"
 EFI_PROVIDER = ""
 WKS_FILE ?= "grub-bootdisk.wks"
 QEMU_EXTRAOPTIONS_zen1 = " -cpu EPYC"
+
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-amd"
+MACHINE_EXTRA_RRECOMMENDS:append = " kernel-modules linux-firmware"
