@@ -15,3 +15,6 @@ QEMU_EXTRAOPTIONS_zen1 = " -cpu EPYC"
 
 PREFERRED_PROVIDER_virtual/kernel ?= "linux-amd"
 MACHINE_EXTRA_RRECOMMENDS:append = " kernel-modules linux-firmware"
+
+OPENBLAS_TARGET = "ZEN"
+
