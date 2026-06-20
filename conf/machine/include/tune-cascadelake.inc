@@ -17,7 +17,6 @@ TUNEVALID[cascadelake] = "Enable cascadelake specific processor optimizations"
 TUNE_CCARGS .= "${@bb.utils.contains('TUNE_FEATURES', 'cascadelake', ' -march=cascadelake ${CASCADELAKE_TUNE} -mfpmath=sse', '', d)}"
 
 # Extra tune selections
-
 AVAILTUNES += "cascadelake-64"
 TUNE_FEATURES:tune-cascadelake-64 = "${TUNE_FEATURES:tune-x86-64} cascadelake"
 BASE_LIB:tune-cascadelake-64 = "lib64"

@@ -15,7 +15,6 @@ TUNEVALID[skylake] = "Enable skylake specific processor optimizations"
 TUNE_CCARGS .= "${@bb.utils.contains('TUNE_FEATURES', 'skylake', ' -march=skylake ${SKYLAKE_TUNE} -mfpmath=sse', '', d)}"
 
 # Extra tune selections
-
 AVAILTUNES += "skylake-64"
 TUNE_FEATURES:tune-skylake-64 = "${TUNE_FEATURES:tune-x86-64} skylake"
 BASE_LIB:tune-skylake-64 = "lib64"
