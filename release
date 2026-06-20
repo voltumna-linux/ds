@@ -9,6 +9,15 @@ declare -A IMAGES
 IMAGES[naples-kvm]="ds-sre public tar
 			ds-sde public tar
                 	ds-sdk public sh"
+IMAGES[rome-kvm]="ds-sre public tar
+			ds-sde public tar
+                	ds-sdk public sh"
+IMAGES[ivybridge-kvm]="ds-sre public tar
+			ds-sde public tar
+                	ds-sdk public sh"
+IMAGES[skylake-kvm]="ds-sre public tar
+			ds-sde public tar
+                	ds-sdk public sh"
 IMAGES[cascadelake-kvm]="ds-sre public tar
 			ds-sde public tar
                 	ds-sdk public sh"
