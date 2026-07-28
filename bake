@@ -1,24 +1,44 @@
-MACHINE="naples-kvm"
-nice bitbake -k ds-sre ds-sde || return
-SDKMACHINE="x86_64"
-nice bitbake -k ds-sdk -c populate_sdk || return
+#!/usr/bin/env bash
 
-MACHINE="rome-kvm"
-nice bitbake -k ds-sre ds-sde || return
-SDKMACHINE="x86_64"
-nice bitbake -k ds-sdk -c populate_sdk || return
+set -euo pipefail
+trap 'printf "Errore alla riga %s\n" "$LINENO" >&2' ERR
 
-MACHINE="ivybridge-kvm"
-nice bitbake -k ds-sre ds-sde || return
-SDKMACHINE="x86_64"
-nice bitbake -k ds-sdk -c populate_sdk || return
+read -r -d '' DATI <<'EOF' || true
+naples-kvm image ds-sde public wic
+naples-kvm image ds-sre public wic
+naples-kvm sdk ds-sdk public sh
+rome-kvm image ds-sde public wic
+rome-kvm image ds-sre public wic
+rome-kvm sdk ds-sdk public sh
+ivybridge-kvm image ds-sde public wic
+ivybridge-kvm image ds-sre public wic
+ivybridge-kvm sdk ds-sdk public sh
+skylake-kvm image ds-sde public wic
+skylake-kvm image ds-sre public wic
+skylake-kvm sdk ds-sdk public sh
+cascadelake-kvm image ds-sde public wic
+cascadelake-kvm image ds-sre public wic
+cascadelake-kvm sdk ds-sdk public sh
+EOF
 
-MACHINE="skylake-kvm"
-nice bitbake -k ds-sre ds-sde || return
-SDKMACHINE="x86_64"
-nice bitbake -k ds-sdk -c populate_sdk || return
+if [[ "${BASH_SOURCE[0]}" == "$0" ]]; then
+    exec 3<<< "$DATI"
 
-MACHINE="cascadelake-kvm"
-nice bitbake -k ds-sre ds-sde || return
-SDKMACHINE="x86_64"
-nice bitbake -k ds-sdk -c populate_sdk || return
+    while read -r -u 3 machine type image outputdir format; do
+        export MACHINE="$machine"
+
+        case "$type" in
+            image)
+                nice bitbake -k "$image" -c rootfs
+                ;;
+            sdk)
+                ;;
+            *)
+                printf 'Type unknown: %s\n' "$type" >&2
+                exit 1
+                ;;
+        esac
+    done
+
+    exec 3<&-
+fi
