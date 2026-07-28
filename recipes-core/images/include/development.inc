@@ -1,2 +1,2 @@
 IMAGE_INSTALL:append = " cpptango-dev net-snmp-dev libads-dev \
-        boost-dev"
+        boost-dev python3-zipapp"
