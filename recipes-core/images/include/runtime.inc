@@ -1,3 +1,3 @@
-IMAGE_INSTALL:append = " starter users cpptango python3-pytango \
+IMAGE_INSTALL:append = " starter cpptango python3-pytango \
         net-snmp-client libads libads-bin boost \
         python3-pyads python3-scipy rstango libpq fmt libpqxx"
